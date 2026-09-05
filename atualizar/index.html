@@ -1,8 +1,77 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Atualizar - Controle de Frota</title><link rel="stylesheet" href="../css/style.css"><script src="../assets/site-config.js"></script></head><body>
-<header><div class="header-inner"><h1>Atualizar aplicativo</h1><p class="subtitle">Controle de Frota</p></div></header><main>
-<div class="card"><a href="../">← Voltar ao início</a><p>Versão publicada: <strong id="version">carregando...</strong></p><a id="download" class="button disabled" href="#">Download ainda não publicado</a></div>
-<h2>Como instalar</h2><div class="card"><ol><li>Baixe o APK pelo botão acima.</li><li>Abra o arquivo no Android.</li><li>Autorize a instalação/atualização quando solicitado.</li><li>Instale <strong>por cima da versão existente</strong>.</li></ol><div class="note warning"><strong>Não desinstale a versão anterior</strong> se houver registros offline pendentes de sincronização.</div></div>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Atualizar - Controle de Frota</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../assets/release-service.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <h1>Atualizar aplicativo</h1>
+    <p class="subtitle">Controle de Frota</p>
+  </div>
+</header>
+<main>
+  <div class="card">
+    <a href="../">← Voltar ao início</a>
+    <p>Versão publicada: <strong id="version">consultando...</strong></p>
+    <p id="message" class="small" hidden></p>
+    <p id="status" class="small">Consultando a versão disponível...</p>
+    <a id="download" class="button" href="#">Baixar versão mais recente</a>
+  </div>
+
+  <h2>Como instalar</h2>
+  <div class="card">
+    <ol>
+      <li>Toque em <strong>Baixar versão mais recente</strong>.</li>
+      <li>Abra o arquivo APK no Android.</li>
+      <li>Autorize a instalação/atualização quando solicitado.</li>
+      <li>Instale <strong>por cima da versão existente</strong>.</li>
+    </ol>
+    <div class="note warning">
+      <strong>Não desinstale a versão anterior</strong> se houver registros offline pendentes de sincronização.
+    </div>
+  </div>
+</main>
+<footer id="footer">Suporte: <a href="mailto:rcayret@gmail.com">rcayret@gmail.com</a></footer>
+
 <script>
-const c=window.CONTROLE_FROTA_SITE||{};document.getElementById('version').textContent=`${c.latestVersion||'-'} (build ${c.latestBuild||'-'})`;const a=document.getElementById('download');if(c.apkUrl){a.href=c.apkUrl;a.textContent='Baixar atualização';a.classList.remove('disabled');}
+window.addEventListener('DOMContentLoaded', async () => {
+  const version = document.getElementById('version');
+  const message = document.getElementById('message');
+  const status = document.getElementById('status');
+  const download = document.getElementById('download');
+  const footer = document.getElementById('footer');
+
+  // O endereço é permanente: aponta sempre para o asset de mesmo nome
+  // do Release mais recente do GitHub.
+  download.href = window.ControleFrotaReleaseService.latestApkUrl;
+
+  try {
+    const c = await window.ControleFrotaReleaseService.load();
+    version.textContent = `${c.latest_version || '-'} (build ${c.latest_build ?? '-'})`;
+
+    if (c.update_message) {
+      message.textContent = c.update_message;
+      message.hidden = false;
+    }
+
+    status.textContent = c.force_update
+      ? 'Esta atualização foi marcada como obrigatória.'
+      : 'Esta é a versão mais recente informada pelo sistema.';
+
+    if (c.support_email) {
+      footer.innerHTML = `Suporte: <a href="mailto:${c.support_email}">${c.support_email}</a>`;
+    }
+  } catch (e) {
+    version.textContent = 'não foi possível consultar';
+    status.textContent = 'Não foi possível consultar o Supabase agora. O botão abaixo continua apontando para o APK do Release mais recente.';
+    console.error(e);
+  }
+});
 </script>
-</main><footer>Suporte: <a href="mailto:rcayret@gmail.com">rcayret@gmail.com</a></footer></body></html>
+</body>
+</html>
