@@ -1,0 +1,8 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Atualizar - Controle de Frota</title><link rel="stylesheet" href="../css/style.css"><script src="../assets/site-config.js"></script></head><body>
+<header><div class="header-inner"><h1>Atualizar aplicativo</h1><p class="subtitle">Controle de Frota</p></div></header><main>
+<div class="card"><a href="../">← Voltar ao início</a><p>Versão publicada: <strong id="version">carregando...</strong></p><a id="download" class="button disabled" href="#">Download ainda não publicado</a></div>
+<h2>Como instalar</h2><div class="card"><ol><li>Baixe o APK pelo botão acima.</li><li>Abra o arquivo no Android.</li><li>Autorize a instalação/atualização quando solicitado.</li><li>Instale <strong>por cima da versão existente</strong>.</li></ol><div class="note warning"><strong>Não desinstale a versão anterior</strong> se houver registros offline pendentes de sincronização.</div></div>
+<script>
+const c=window.CONTROLE_FROTA_SITE||{};document.getElementById('version').textContent=`${c.latestVersion||'-'} (build ${c.latestBuild||'-'})`;const a=document.getElementById('download');if(c.apkUrl){a.href=c.apkUrl;a.textContent='Baixar atualização';a.classList.remove('disabled');}
+</script>
+</main><footer>Suporte: <a href="mailto:rcayret@gmail.com">rcayret@gmail.com</a></footer></body></html>
