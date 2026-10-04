@@ -1,11 +1,218 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Controle de Frota</title><link rel="stylesheet" href="css/style.css"></head><body>
-<header><div class="header-inner"><div class="brand"><img src="assets/app_icon.png" alt="Ícone Controle de Frota"><div><h1>Controle de Frota</h1><p class="subtitle">Orientações, privacidade, suporte e atualizações</p></div></div></div></header>
-<main>
-<div class="card"><p>Área pública de apoio aos usuários do aplicativo <strong>Controle de Frota</strong>.</p>
-<a class="button" href="manual/">Orientações de uso</a>
-<a class="button secondary" href="atualizar/">Atualizar aplicativo</a>
-<a class="button secondary" href="privacidade/">Política de Privacidade</a>
-<a class="button secondary" href="excluir-conta/">Exclusão de conta</a>
-<a class="button secondary" href="contato/">Contato e suporte</a></div>
-<div class="card"><h2>Uso do aplicativo</h2><p>O Controle de Frota organiza veículos, viagens, abastecimentos, receitas e despesas, manutenções, documentos e ocorrências. As opções disponíveis podem variar conforme o perfil e as permissões definidas pela administração da frota.</p></div>
-</main><footer>Controle de Frota • Suporte: <a href="mailto:rcayret@gmail.com">rcayret@gmail.com</a></footer></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exclusão de conta | Controle de Frota</title>
+  <meta name="description" content="Orientações para exclusão de conta e dados no aplicativo Controle de Frota.">
+  <style>
+    :root {
+      --azul: #285876;
+      --fundo: #f3f6f8;
+      --texto: #102433;
+      --borda: #cfd9df;
+      --link: #17638d;
+      --alerta-fundo: #fdecef;
+      --alerta-borda: #bb2d3b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background: var(--fundo);
+      line-height: 1.55;
+    }
+
+    header {
+      background: var(--azul);
+      color: white;
+      padding: 18px 16px 17px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.45rem;
+    }
+
+    header p {
+      margin: 2px 0 0;
+      font-size: 0.82rem;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 22px 16px 42px;
+    }
+
+    .voltar,
+    .card {
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 11px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .voltar {
+      padding: 13px 15px;
+      margin-bottom: 20px;
+    }
+
+    .voltar a,
+    a {
+      color: var(--link);
+    }
+
+    h2 {
+      margin: 22px 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .card {
+      padding: 20px 16px;
+    }
+
+    ol {
+      padding-left: 22px;
+      margin-top: 0;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .solicitacao {
+      margin-top: 14px;
+    }
+
+    .botao-email {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--azul);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .alerta {
+      margin-top: 10px;
+      padding: 12px 14px;
+      background: var(--alerta-fundo);
+      border-left: 4px solid var(--alerta-borda);
+      border-radius: 6px;
+    }
+
+    footer {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 16px 22px;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.35rem;
+      }
+
+      main {
+        padding-top: 20px;
+      }
+
+      .card {
+        padding: 18px 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Exclusão de conta</h1>
+    <p>Controle de Frota</p>
+  </header>
+
+  <main>
+    <div class="voltar">
+      <a href="../">← Voltar ao início</a>
+    </div>
+
+    <h2>Excluir a própria conta</h2>
+    <section class="card">
+      <ol>
+        <li>Entre no aplicativo.</li>
+        <li>Abra <strong>Minha conta</strong>.</li>
+        <li>Toque em <strong>Excluir minha conta</strong>.</li>
+        <li>Leia as informações e confirme a exclusão.</li>
+      </ol>
+
+      <p>
+        O acesso é removido e o endereço de e-mail poderá ser usado em um novo cadastro.
+        Registros operacionais que já pertencem à frota podem ser preservados para manter o histórico.
+      </p>
+    </section>
+
+    <h2>Solicitar exclusão sem acessar o aplicativo</h2>
+    <section class="card solicitacao">
+      <p>
+        Você também pode solicitar a exclusão da sua conta do <strong>Controle de Frota</strong>
+        sem acessar o aplicativo.
+      </p>
+
+      <p>
+        Envie um e-mail para
+        <a href="mailto:rcayret@gmail.com?subject=Exclus%C3%A3o%20de%20conta%20-%20Controle%20de%20Frota">
+          rcayret@gmail.com
+        </a>
+        com o assunto <strong>“Exclusão de conta – Controle de Frota”</strong>,
+        utilizando preferencialmente o endereço de e-mail cadastrado na conta.
+      </p>
+
+      <p>
+        Após a confirmação da identidade do titular, a conta será excluída.
+      </p>
+
+      <a class="botao-email"
+         href="mailto:rcayret@gmail.com?subject=Exclus%C3%A3o%20de%20conta%20-%20Controle%20de%20Frota">
+        Solicitar exclusão por e-mail
+      </a>
+    </section>
+
+    <h2>Remoção pelo Administrador</h2>
+    <section class="card">
+      <p>
+        O Administrador pode remover um usuário no menu <strong>Usuários</strong>.
+        O usuário perde o acesso àquela frota e os registros já sincronizados permanecem no histórico.
+        Se houver lançamentos ainda somente no aparelho desse usuário, eles devem ser sincronizados
+        antes da remoção. O e-mail poderá ser cadastrado novamente em outra frota.
+      </p>
+    </section>
+
+    <div class="alerta">
+      <strong>Administrador único:</strong>
+      se ainda existirem outros usuários na frota, o sistema pode exigir que outro Administrador
+      seja mantido antes da exclusão da conta do Administrador atual.
+    </div>
+
+    <h2>Suporte e solicitação de exclusão</h2>
+    <section class="card">
+      <p>
+        Se precisar de ajuda com a exclusão da conta ou não conseguir acessar o aplicativo,
+        entre em contato:
+        <a href="mailto:rcayret@gmail.com">rcayret@gmail.com</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Controle de Frota
+  </footer>
+
+</body>
+</html>
