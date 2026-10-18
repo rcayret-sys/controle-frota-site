@@ -24,7 +24,7 @@
   <div class="card">
     <a href="../">← Voltar ao início</a>
     <p>Esta página orienta usuários convidados para o teste fechado do Controle de Frota no Google Play. O link de participação aparecerá aqui assim que a versão for liberada para testes.</p>
-    <a id="join" class="button disabled" href="#" hidden>Participar do teste</a>
+    <a id="join" class="button" href="https://play.google.com/apps/testing/br.com.rcayret.controlefrota">Participar do teste fechado</a>
     <a id="play" class="button secondary" href="#" hidden>Abrir no Google Play</a>
   </div>
 
@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const c = await window.ControleFrotaReleaseService.load();
     const playUrl = c.play_store_url || window.ControleFrotaReleaseService.playStoreUrl;
     if (c.closed_test_opt_in_url) {
-      join.href = c.closed_test_opt_in_url;
+      join.href = 'https://play.google.com/apps/testing/br.com.rcayret.controlefrota';
       join.classList.remove('disabled');
       join.hidden = false;
     }
