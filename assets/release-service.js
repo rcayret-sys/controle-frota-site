@@ -5,7 +5,12 @@
 window.ControleFrotaReleaseService = (() => {
   const SUPABASE_URL = 'https://fxmqtqqdciteroicmjyc.supabase.co';
   const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_Zix3jef0TY9Uazf0xkOc3w_R1XJteCp';
-  const LATEST_APK_URL = 'https://github.com/rcayret-sys/controle-frota-site/releases/latest/download/ControleFrota-latest.apk';
+
+  const LATEST_APK_URL =
+    'https://github.com/rcayret-sys/controle-frota-site/releases/latest/download/ControleFrota-latest.apk';
+
+  const PLAY_STORE_URL =
+    'https://play.google.com/store/apps/details?id=br.com.rcayret.controlefrota';
 
   async function load() {
     const response = await fetch(
@@ -24,17 +29,24 @@ window.ControleFrotaReleaseService = (() => {
 
     if (!response.ok) {
       const detail = await response.text().catch(() => '');
-      throw new Error(`Falha ao consultar versão (${response.status})${detail ? `: ${detail}` : ''}`);
+      throw new Error(
+        `Falha ao consultar versão (${response.status})${detail ? `: ${detail}` : ''}`
+      );
     }
 
     const data = await response.json();
     const row = Array.isArray(data) ? data[0] : data;
-    if (!row) throw new Error('Configuração de versão não encontrada.');
+
+    if (!row) {
+      throw new Error('Configuração de versão não encontrada.');
+    }
+
     return row;
   }
 
   return {
     load,
-    latestApkUrl: LATEST_APK_URL
+    latestApkUrl: LATEST_APK_URL,
+    playStoreUrl: PLAY_STORE_URL
   };
 })();

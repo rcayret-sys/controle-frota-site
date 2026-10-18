@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Teste fechado - Controle de Frota</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../assets/release-service.js" defer></script>
+  <script src="../assets/theme.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../" aria-label="Controle de Frota, início">
+      <img src="../assets/app_icon.png" alt="" width="55" height="55">
+      <span><span class="brand-name">Controle de Frota</span><span class="brand-subtitle">Site oficial · Suporte e orientações</span></span>
+    </a>
+    <button type="button" class="theme-toggle" data-theme-toggle aria-label="Alternar tema" title="Alternar tema"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Escuro</span></button>
+  </div>
+  <nav class="site-nav" aria-label="Navegação principal"><div class="site-nav-inner"><a href="../">Início</a> <a href="../manual/">Manual</a> <a href="../atualizar/">Atualizações</a> <a href="../teste/" aria-current="page">Teste fechado</a> <a href="../privacidade/">Privacidade</a> <a href="../excluir-conta/">Excluir conta</a> <a href="../contato/">Contato</a></div></nav>
+  <div class="page-heading"><h1>Teste fechado</h1><p class="subtitle">Orientações para participantes convidados</p></div>
+</header>
+<main>
+  <div class="card">
+    <a href="../">← Voltar ao início</a>
+    <p>Esta página orienta usuários convidados para o teste fechado do Controle de Frota no Google Play. O link de participação aparecerá aqui assim que a versão for liberada para testes.</p>
+    <a id="join" class="button disabled" href="#" hidden>Participar do teste</a>
+    <a id="play" class="button secondary" href="#" hidden>Abrir no Google Play</a>
+  </div>
+
+  <h2>Para quem já usa o aplicativo</h2>
+  <div class="card">
+    <ol>
+      <li>Abra o aplicativo atual conectado à internet.</li>
+      <li>Sincronize todos os registros pendentes.</li>
+      <li><strong>Não desinstale</strong> o Controle de Frota.</li>
+      <li>Participe do teste usando a mesma Conta Google que está no aparelho.</li>
+      <li>Atualize o aplicativo pela Play Store.</li>
+    </ol>
+  </div>
+
+  <h2>Durante o teste</h2>
+  <div class="card">
+    <p>Use normalmente as funções às quais você tem acesso e informe qualquer falha, comportamento inesperado ou dificuldade de uso.</p>
+    <p>Feedback: <a href="mailto:rcayret.apps@gmail.com?subject=Feedback%20teste%20Controle%20de%20Frota">rcayret.apps@gmail.com</a>.</p>
+  </div>
+</main>
+<footer id="footer"><div class="footer-inner"><span>© 2026 Controle de Frota · Suporte e privacidade</span><span>Contato: <a href="mailto:rcayret.apps@gmail.com">rcayret.apps@gmail.com</a></span></div></footer>
+<script>
+window.addEventListener('DOMContentLoaded', async () => {
+  const join = document.getElementById('join');
+  const play = document.getElementById('play');
+  try {
+    const c = await window.ControleFrotaReleaseService.load();
+    const playUrl = c.play_store_url || window.ControleFrotaReleaseService.playStoreUrl;
+    if (c.closed_test_opt_in_url) {
+      join.href = c.closed_test_opt_in_url;
+      join.classList.remove('disabled');
+      join.hidden = false;
+    }
+    if (c.closed_test_opt_in_url) {
+      play.href = playUrl;
+      play.hidden = false;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+});
+</script>
+</body>
+</html>
